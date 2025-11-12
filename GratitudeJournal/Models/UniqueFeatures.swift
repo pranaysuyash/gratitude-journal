@@ -316,3 +316,70 @@ enum ColorBlindMode: String, Codable, CaseIterable {
         }
     }
 }
+
+// MARK: - Collections
+@Model
+final class EntryCollection {
+    var id: UUID
+    var name: String
+    var collectionDescription: String
+    var theme: String
+    var color: String // Hex color
+    var entryIDs: [UUID]
+    var createdDate: Date
+    var isFavorite: Bool
+
+    init(name: String, description: String = "", theme: String = "General", color: String = "#007AFF") {
+        self.id = UUID()
+        self.name = name
+        self.collectionDescription = description
+        self.theme = theme
+        self.color = color
+        self.entryIDs = []
+        self.createdDate = Date()
+        self.isFavorite = false
+    }
+
+    func addEntry(_ entryID: UUID) {
+        if !entryIDs.contains(entryID) {
+            entryIDs.append(entryID)
+        }
+    }
+
+    func removeEntry(_ entryID: UUID) {
+        entryIDs.removeAll { $0 == entryID }
+    }
+
+    var entryCount: Int {
+        entryIDs.count
+    }
+
+    static var defaultCollections: [EntryCollection] {
+        [
+            EntryCollection(
+                name: "Favorite Memories",
+                description: "My most cherished grateful moments",
+                theme: "Memories",
+                color: "#FF6B6B"
+            ),
+            EntryCollection(
+                name: "Growth & Learning",
+                description: "Lessons and personal development",
+                theme: "Growth",
+                color: "#4ECDC4"
+            ),
+            EntryCollection(
+                name: "Relationships",
+                description: "Gratitude for the people in my life",
+                theme: "People",
+                color: "#FFE66D"
+            ),
+            EntryCollection(
+                name: "Health & Wellness",
+                description: "Physical and mental wellbeing",
+                theme: "Health",
+                color: "#95E1D3"
+            )
+        ]
+    }
+}

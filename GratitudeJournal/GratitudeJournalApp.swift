@@ -18,7 +18,29 @@ struct GratitudeJournalApp: App {
 
     init() {
         do {
-            modelContainer = try ModelContainer(for: JournalEntry.self, Reminder.self, GratitudeGoal.self, Badge.self, Category.self)
+            modelContainer = try ModelContainer(for:
+                JournalEntry.self,
+                Reminder.self,
+                GratitudeGoal.self,
+                Badge.self,
+                Category.self,
+                VisionBoard.self,
+                EntryCollection.self,
+                GratitudeAffirmation.self,
+                GratitudeJar.self,
+                TimeCapsule.self,
+                FutureSelfLetter.self,
+                DreamJournalEntry.self,
+                GratitudeScavengerHunt.self,
+                WritingTemplate.self,
+                WritingChallenge.self,
+                UserProgress.self,
+                PrivacySettings.self,
+                PrivateVault.self,
+                WellnessTracking.self,
+                DailyRoutine.self,
+                AccessibilitySettings.self
+            )
         } catch {
             fatalError("Could not initialize ModelContainer: \(error)")
         }

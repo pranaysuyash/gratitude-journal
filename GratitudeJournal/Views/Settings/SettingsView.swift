@@ -26,6 +26,20 @@ struct SettingsView: View {
     @State private var enableHaptics = true
     @State private var enableSounds = true
 
+    // New feature views
+    @State private var showVisionBoard = false
+    @State private var showCollections = false
+    @State private var showAffirmations = false
+    @State private var showGratitudeJar = false
+    @State private var showTimeCapsule = false
+    @State private var showScavengerHunt = false
+    @State private var showAdvancedAnalytics = false
+    @State private var showTemplates = false
+    @State private var showChallenges = false
+    @State private var showIntegrations = false
+    @State private var showSocialFeatures = false
+    @State private var showGamification = false
+
     var body: some View {
         NavigationStack {
             List {
@@ -133,6 +147,266 @@ struct SettingsView: View {
                     }
                 } header: {
                     Text("Journaling")
+                }
+
+                // Creative Features Section
+                Section {
+                    Button(action: { showVisionBoard = true }) {
+                        HStack {
+                            Image(systemName: "target")
+                                .foregroundColor(.purple)
+                                .frame(width: 30)
+
+                            Text("Vision Board")
+                                .foregroundColor(themeManager.currentTheme.textPrimary)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.currentTheme.textSecondary)
+                        }
+                    }
+
+                    Button(action: { showCollections = true }) {
+                        HStack {
+                            Image(systemName: "folder.fill.badge.plus")
+                                .foregroundColor(.blue)
+                                .frame(width: 30)
+
+                            Text("Collections")
+                                .foregroundColor(themeManager.currentTheme.textPrimary)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.currentTheme.textSecondary)
+                        }
+                    }
+
+                    Button(action: { showAffirmations = true }) {
+                        HStack {
+                            Image(systemName: "sparkles")
+                                .foregroundColor(.orange)
+                                .frame(width: 30)
+
+                            Text("Affirmations")
+                                .foregroundColor(themeManager.currentTheme.textPrimary)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.currentTheme.textSecondary)
+                        }
+                    }
+
+                    Button(action: { showGratitudeJar = true }) {
+                        HStack {
+                            Text("🏺")
+                                .font(.title3)
+                                .frame(width: 30)
+
+                            Text("Gratitude Jar")
+                                .foregroundColor(themeManager.currentTheme.textPrimary)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.currentTheme.textSecondary)
+                        }
+                    }
+
+                    Button(action: { showTimeCapsule = true }) {
+                        HStack {
+                            Image(systemName: "clock.arrow.circlepath")
+                                .foregroundColor(.cyan)
+                                .frame(width: 30)
+
+                            Text("Time Capsule")
+                                .foregroundColor(themeManager.currentTheme.textPrimary)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.currentTheme.textSecondary)
+                        }
+                    }
+
+                    Button(action: { showScavengerHunt = true }) {
+                        HStack {
+                            Image(systemName: "scope")
+                                .foregroundColor(.green)
+                                .frame(width: 30)
+
+                            Text("Scavenger Hunts")
+                                .foregroundColor(themeManager.currentTheme.textPrimary)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.currentTheme.textSecondary)
+                        }
+                    }
+                } header: {
+                    Text("Creative Features")
+                }
+
+                // Analytics & Insights Section
+                Section {
+                    Button(action: { showAdvancedAnalytics = true }) {
+                        HStack {
+                            Image(systemName: "chart.bar.xaxis")
+                                .foregroundColor(.indigo)
+                                .frame(width: 30)
+
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Advanced Analytics")
+                                    .foregroundColor(themeManager.currentTheme.textPrimary)
+                                Text("Word clouds, relationships, timeline")
+                                    .font(.caption)
+                                    .foregroundColor(themeManager.currentTheme.textSecondary)
+                            }
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.currentTheme.textSecondary)
+                        }
+                    }
+                } header: {
+                    Text("Analytics")
+                }
+
+                // Templates & Challenges Section
+                Section {
+                    Button(action: { showTemplates = true }) {
+                        HStack {
+                            Image(systemName: "doc.text.fill")
+                                .foregroundColor(.pink)
+                                .frame(width: 30)
+
+                            Text("Writing Templates")
+                                .foregroundColor(themeManager.currentTheme.textPrimary)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.currentTheme.textSecondary)
+                        }
+                    }
+
+                    Button(action: { showChallenges = true }) {
+                        HStack {
+                            Image(systemName: "flag.fill")
+                                .foregroundColor(.orange)
+                                .frame(width: 30)
+
+                            Text("Challenges")
+                                .foregroundColor(themeManager.currentTheme.textPrimary)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.currentTheme.textSecondary)
+                        }
+                    }
+
+                    Button(action: { showGamification = true }) {
+                        HStack {
+                            Image(systemName: "gamecontroller.fill")
+                                .foregroundColor(.purple)
+                                .frame(width: 30)
+
+                            Text("Gamification")
+                                .foregroundColor(themeManager.currentTheme.textPrimary)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.currentTheme.textSecondary)
+                        }
+                    }
+                } header: {
+                    Text("Motivation")
+                }
+
+                // Integrations Section
+                Section {
+                    Button(action: { showIntegrations = true }) {
+                        HStack {
+                            Image(systemName: "link.circle")
+                                .foregroundColor(.blue)
+                                .frame(width: 30)
+
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Integrations")
+                                    .foregroundColor(themeManager.currentTheme.textPrimary)
+                                Text("Weather, Calendar, Music, Health")
+                                    .font(.caption)
+                                    .foregroundColor(themeManager.currentTheme.textSecondary)
+                            }
+
+                            Spacer()
+
+                            Text("Coming Soon")
+                                .font(.caption)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color.orange.opacity(0.2))
+                                .foregroundColor(.orange)
+                                .cornerRadius(6)
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.currentTheme.textSecondary)
+                        }
+                    }
+                } header: {
+                    Text("Connect")
+                }
+
+                // Social & Family Section
+                Section {
+                    Button(action: { showSocialFeatures = true }) {
+                        HStack {
+                            Image(systemName: "person.3.fill")
+                                .foregroundColor(.green)
+                                .frame(width: 30)
+
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Family & Social")
+                                    .foregroundColor(themeManager.currentTheme.textPrimary)
+                                Text("Share gratitude with loved ones")
+                                    .font(.caption)
+                                    .foregroundColor(themeManager.currentTheme.textSecondary)
+                            }
+
+                            Spacer()
+
+                            Text("Coming Soon")
+                                .font(.caption)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color.orange.opacity(0.2))
+                                .foregroundColor(.orange)
+                                .cornerRadius(6)
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.currentTheme.textSecondary)
+                        }
+                    }
+                } header: {
+                    Text("Community")
                 }
 
                 // Privacy & Security
@@ -308,6 +582,43 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showAbout) {
                 AboutView()
+            }
+            // New feature sheets
+            .sheet(isPresented: $showVisionBoard) {
+                VisionBoardView()
+            }
+            .sheet(isPresented: $showCollections) {
+                CollectionsView()
+            }
+            .sheet(isPresented: $showAffirmations) {
+                AffirmationsView()
+            }
+            .sheet(isPresented: $showGratitudeJar) {
+                GratitudeJarView()
+            }
+            .sheet(isPresented: $showTimeCapsule) {
+                TimeCapsuleView()
+            }
+            .sheet(isPresented: $showScavengerHunt) {
+                ScavengerHuntView()
+            }
+            .sheet(isPresented: $showAdvancedAnalytics) {
+                AdvancedAnalyticsView()
+            }
+            .sheet(isPresented: $showTemplates) {
+                TemplateSelectionView()
+            }
+            .sheet(isPresented: $showChallenges) {
+                ChallengesView()
+            }
+            .sheet(isPresented: $showGamification) {
+                GamificationDashboardView()
+            }
+            .sheet(isPresented: $showIntegrations) {
+                APIIntegrationsView()
+            }
+            .sheet(isPresented: $showSocialFeatures) {
+                FamilyGroupFeaturesView()
             }
         }
     }

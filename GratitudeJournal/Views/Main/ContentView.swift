@@ -78,5 +78,20 @@ struct ContentView: View {
         .environmentObject(ThemeManager())
         .environmentObject(NotificationManager())
         .environmentObject(AudioManager())
-        .modelContainer(for: [JournalEntry.self, Reminder.self, GratitudeGoal.self, Badge.self, Category.self])
+        .modelContainer(for: [
+            JournalEntry.self,
+            Reminder.self,
+            GratitudeGoal.self,
+            Badge.self,
+            Category.self,
+            VisionBoard.self,
+            EntryCollection.self,
+            GratitudeAffirmation.self,
+            GratitudeJar.self,
+            TimeCapsule.self,
+            GratitudeScavengerHunt.self,
+            WritingTemplate.self,
+            WritingChallenge.self,
+            UserProgress.self
+        ])
 }
