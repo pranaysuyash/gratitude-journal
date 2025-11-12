@@ -33,7 +33,7 @@ This document provides a comprehensive overview of ALL features in the Gratitude
 |---------|--------|----------|-------|
 | Search entries by keyword or date | ✅ | `Views/Journal/JournalListView.swift` | Full-text search with SwiftUI searchable |
 | Create custom gratitude categories | ✅ | `Views/Settings/CategoriesView.swift` | Custom icons and colors |
-| Create gratitude collections by theme | ✅ | `Models/Category.swift` | Category-based organization |
+| Create gratitude collections by theme | ✅ | `Views/Creative/CollectionsView.swift` | Full collections system with colors, favorites, default collections |
 | Review gratitude entries by category | ✅ | `Views/Journal/JournalListView.swift` | Filter by category |
 | Review gratitude entries by location | 🔨 | `Models/JournalEntry.swift` | Location field exists, UI basic |
 | Review gratitude entries by emotion | ✅ | `Views/Journal/JournalListView.swift` | Emotion tracking and filtering |
@@ -70,11 +70,11 @@ This document provides a comprehensive overview of ALL features in the Gratitude
 | View gratitude statistics and insights | ✅ | `Views/Analytics/AnalyticsView.swift` | Comprehensive stats dashboard |
 | Review weekly gratitude highlights | ✅ | `Views/Analytics/AnalyticsView.swift` | Week filter implemented |
 | Reflect on monthly gratitude patterns | ✅ | `Views/Analytics/AnalyticsView.swift` | Month filter and mood charts |
-| Review gratitude word cloud | 🔨 | `Views/Analytics/AnalyticsView.swift` | Top tags shown (not visual cloud) |
+| Review gratitude word cloud | ✅ | `Views/Analytics/AdvancedAnalyticsView.swift` | Full word frequency visualization with stop-word filtering |
 | Compare gratitude trends year over year | 🔜 | `Services/StreakManager.swift` | Needs year comparison view |
 | Celebrate gratitude milestones with badges | ✅ | `Models/Badge.swift` | 20+ badges implemented |
 | Reflect on gratitude growth over time | ✅ | `Views/Analytics/AnalyticsView.swift` | Trends and insights |
-| Review gratitude memories on this day | 🔜 | Planned | Needs "On This Day" view |
+| Review gratitude memories on this day | ✅ | `Views/Analytics/AdvancedAnalyticsView.swift` | "On This Day" view with past years' entries |
 | View gratitude heatmap calendar | ✅ | `Views/Analytics/AnalyticsView.swift` | 12-week heatmap |
 
 ---
@@ -128,9 +128,9 @@ This document provides a comprehensive overview of ALL features in the Gratitude
 | Create gratitude photo collages | 🔜 | `Services/ExportService.swift` | Placeholder in export options |
 | Create gratitude photo diary entries | ✅ | `Views/Journal/NewEntryView.swift` | Photo entries supported |
 | Create gratitude photo memories timeline | 🔜 | Planned | Needs timeline view |
-| Set gratitude jar with virtual notes | ✅ | `Models/UniqueFeatures.swift` | GratitudeJar model complete |
-| Create gratitude vision board | ✅ | `Models/UniqueFeatures.swift` | VisionBoard model complete |
-| Create gratitude affirmations from entries | ✅ | `Models/UniqueFeatures.swift` | Auto-generation logic |
+| Set gratitude jar with virtual notes | ✅ | `Views/Creative/GratitudeJarView.swift` | Full UI with personal/couple/family jars |
+| Create gratitude vision board | ✅ | `Views/Creative/VisionBoardView.swift` | Complete UI with text/image/affirmation/goal items |
+| Create gratitude affirmations from entries | ✅ | `Views/Creative/AffirmationsView.swift` | Daily affirmations with auto-generation and category filtering |
 | Celebrate gratitude anniversaries | 🔨 | `Services/AIService.swift` | Anniversary detection logic |
 
 ---
@@ -167,15 +167,16 @@ This document provides a comprehensive overview of ALL features in the Gratitude
 | Feature | Status | Location | Notes |
 |---------|--------|----------|-------|
 | Import from other journaling apps | 🔜 | Planned | Coming soon placeholder |
-| Calendar integration (Google/Apple) | 📡 | Planned | EventKit ready |
-| Weather API integration | 📡 | `Models/JournalEntry.swift` | Weather fields ready |
-| Spotify/Apple Music integration | 📡 | Planned | Coming soon placeholder |
-| Health app integration | 📡 | Planned | HealthKit ready |
+| Calendar integration (Google/Apple) | 📡 | `Views/Integrations/APIIntegrationsView.swift` | Placeholder UI complete, EventKit ready |
+| Weather API integration | 📡 | `Views/Integrations/APIIntegrationsView.swift` | Placeholder UI complete, weather fields ready |
+| Spotify/Apple Music integration | 📡 | `Views/Integrations/APIIntegrationsView.swift` | Placeholder UI complete, coming soon |
+| Health app integration | 📡 | `Views/Integrations/APIIntegrationsView.swift` | Placeholder UI complete, HealthKit ready |
+| Location services integration | 📡 | `Views/Integrations/APIIntegrationsView.swift` | Placeholder UI complete, CoreLocation ready |
 | Social media import | 🔜 | Planned | Coming soon |
 | Email to journal feature | 🔜 | Planned | Coming soon |
 | WhatsApp/Telegram bot | 🔜 | Planned | External service needed |
 
-**Note:** All integration points have data models ready. UI shows "Coming Soon" messages.
+**Note:** All integration points have complete placeholder UIs with detailed feature descriptions. Data models ready, requires external APIs.
 
 ---
 
@@ -183,15 +184,16 @@ This document provides a comprehensive overview of ALL features in the Gratitude
 
 | Feature | Status | Location | Notes |
 |---------|--------|----------|-------|
-| Family gratitude journal (shared) | 🔜 | Planned | Needs CloudKit sharing |
-| Gratitude jar for couples | ✅ | `Models/UniqueFeatures.swift` | JarType.couple implemented |
-| Group challenges with friends | 🔜 | Planned | Needs backend |
-| Send gratitude cards to others | 🔜 | Planned | Coming soon |
-| Gratitude chain messages | 🔜 | Planned | Coming soon |
+| Family gratitude journal (shared) | 🔜 | `Views/Social/FamilyGroupFeaturesView.swift` | Placeholder UI complete, needs CloudKit |
+| Gratitude jar for couples | ✅ | `Views/Creative/GratitudeJarView.swift` | JarType.couple fully implemented |
+| Group challenges with friends | 🔜 | `Views/Social/FamilyGroupFeaturesView.swift` | Placeholder UI complete, needs backend |
+| Send gratitude cards to others | 🔜 | `Views/Social/FamilyGroupFeaturesView.swift` | Gratitude Exchange placeholder with UI |
+| Gratitude chain messages | 🔜 | `Views/Social/FamilyGroupFeaturesView.swift` | Coming soon with detailed features |
 | Family gratitude tree visualization | 🔜 | Planned | Coming soon |
 | Kids mode with simplified interface | 🔜 | Planned | Separate UI needed |
+| Collaborative goals with family | 🔜 | `Views/Social/FamilyGroupFeaturesView.swift` | Placeholder UI complete, needs backend |
 
-**Note:** Family features require CloudKit or backend. Models are ready.
+**Note:** Family features have complete placeholder UIs. Implementation requires CloudKit or backend infrastructure.
 
 ---
 
@@ -230,12 +232,12 @@ This document provides a comprehensive overview of ALL features in the Gratitude
 | Feature | Status | Location | Notes |
 |---------|--------|----------|-------|
 | Happiness score tracking over time | 🔨 | `Services/StreakManager.swift` | gratitudeScore implemented |
-| Word frequency analysis | 🔨 | `Services/StreakManager.swift` | topTags analysis |
+| Word frequency analysis | ✅ | `Views/Analytics/AdvancedAnalyticsView.swift` | Complete word cloud with top 30 words and filtering |
 | Most grateful times of day/week/year | 🔜 | Planned | Time analysis needed |
-| People you're most grateful for | 🔨 | `Services/StreakManager.swift` | People tracking exists |
+| People you're most grateful for | ✅ | `Views/Analytics/AdvancedAnalyticsView.swift` | Relationship network with top 3 people visualization |
 | Category-based distribution | ✅ | `Views/Analytics/AnalyticsView.swift` | Mood distribution charts |
 | Correlation between gratitude and mood | 🔨 | `Services/StreakManager.swift` | entriesByMood exists |
-| Life events timeline | 🔜 | Planned | Timeline view needed |
+| Life events timeline | ✅ | `Views/Analytics/AdvancedAnalyticsView.swift` | Complete timeline grouped by year and month |
 | Compare with community averages | 🔜 | Planned | Needs backend |
 
 ---
@@ -244,10 +246,10 @@ This document provides a comprehensive overview of ALL features in the Gratitude
 
 | Feature | Status | Location | Notes |
 |---------|--------|----------|-------|
-| Writing prompts difficulty levels | ✅ | `Models/WritingTemplate.swift` | Beginner/Intermediate/Advanced |
-| Gratitude writing challenges | ✅ | `Models/WritingTemplate.swift` | 30-day, 100-day challenges |
+| Writing prompts difficulty levels | ✅ | `Views/Journal/TemplateSelectionView.swift` | Beginner/Intermediate/Advanced with filtering |
+| Gratitude writing challenges | ✅ | `Views/Challenges/ChallengesView.swift` | 30-day, 100-day, weekly, seasonal, and custom challenges |
 | Prompted vs free-form entry toggle | ✅ | `Views/Journal/NewEntryView.swift` | Template selection |
-| Journaling templates (5-min, detailed) | ✅ | `Models/WritingTemplate.swift` | 7 templates |
+| Journaling templates (5-min, detailed) | ✅ | `Views/Journal/TemplateSelectionView.swift` | 7 templates with full UI browser |
 | Scratch pad for draft ideas | ✅ | `Models/JournalEntry.swift` | isDraft field |
 | Rich text formatting options | 🔜 | Planned | AttributedString needed |
 | Drawing/sketching feature | 🔜 | Planned | PencilKit integration |
@@ -311,7 +313,7 @@ This document provides a comprehensive overview of ALL features in the Gratitude
 | AR gratitude visualization | 🔜 | Planned | ARKit needed |
 | Gratitude playlist generator | 🔜 | Planned | Music API needed |
 | Dream journal integration | ✅ | `Models/UniqueFeatures.swift` | DreamJournalEntry model |
-| Gratitude scavenger hunt | ✅ | `Models/UniqueFeatures.swift` | ScavengerHunt model |
+| Gratitude scavenger hunt | ✅ | `Views/Creative/ScavengerHuntView.swift` | Full UI with active/completed hunts, progress tracking |
 | Seasonal gratitude themes | ✅ | `Models/GamificationSystem.swift` | 4 seasonal challenges |
 
 ---
@@ -332,15 +334,15 @@ This document provides a comprehensive overview of ALL features in the Gratitude
 
 | Feature | Status | Location | Notes |
 |---------|--------|----------|-------|
-| Public gratitude feed (optional, anonymous) | 🔜 | Planned | Needs backend |
-| Gratitude exchange (random acts) | 🔜 | Planned | Needs backend |
+| Public gratitude feed (optional, anonymous) | 🔜 | `Views/Social/FamilyGroupFeaturesView.swift` | Placeholder UI complete, needs backend |
+| Gratitude exchange (random acts) | 🔜 | `Views/Social/FamilyGroupFeaturesView.swift` | Placeholder UI complete, needs backend |
 | Local gratitude meetups | 🔜 | Planned | Location + backend |
 | Gratitude book club | 🔜 | Planned | Community platform |
 | Expert-led gratitude workshops | 🔜 | Planned | Video/content platform |
-| Community gratitude projects | 🔜 | Planned | Collaboration platform |
+| Community gratitude projects | 🔜 | `Views/Social/FamilyGroupFeaturesView.swift` | Community view placeholder with benefits |
 | Volunteer opportunity suggestions | 🔜 | Planned | External API |
 
-**Note:** All community features require backend infrastructure or external platforms. Marked as "Coming Soon" in UI.
+**Note:** Community features have placeholder UIs with detailed feature descriptions and benefits. All require backend infrastructure or external platforms.
 
 ---
 
