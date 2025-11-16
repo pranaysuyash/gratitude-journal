@@ -6,19 +6,16 @@
 
 import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PaperProvider } from 'react-native-paper';
 import * as SplashScreen from 'expo-splash-screen';
-import * as Font from 'expo-font';
 
-import { store } from './src/store';
+import { store } from './src/store/store';
 import AppNavigator from './src/navigation/AppNavigator';
-import { ThemeProvider } from './src/contexts/ThemeContext';
-import { AuthProvider } from './src/contexts/AuthContext';
-import { NotificationProvider } from './src/contexts/NotificationContext';
+import AnalyticsService from './src/services/AnalyticsService';
+import FeatureFlagsService from './src/services/FeatureFlagsService';
 
 // Keep splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -29,18 +26,13 @@ export default function App() {
   useEffect(() => {
     async function prepare() {
       try {
-        // Pre-load fonts, make API calls, etc.
-        await Font.loadAsync({
-          'Inter-Regular': require('./assets/fonts/Inter-Regular.ttf'),
-          'Inter-Bold': require('./assets/fonts/Inter-Bold.ttf'),
-          'Inter-SemiBold': require('./assets/fonts/Inter-SemiBold.ttf'),
-        });
-
         // Initialize services
-        // await initializeFirebase();
-        // await initializeAnalytics();
+        await AnalyticsService.initialize();
+        await FeatureFlagsService.initialize();
+
+        console.log('✅ Services initialized successfully');
       } catch (e) {
-        console.warn(e);
+        console.warn('⚠️  Service initialization error:', e);
       } finally {
         setAppIsReady(true);
         await SplashScreen.hideAsync();
@@ -58,18 +50,10 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Provider store={store}>
         <SafeAreaProvider>
-          <ThemeProvider>
-            <AuthProvider>
-              <NotificationProvider>
-                <PaperProvider>
-                  <NavigationContainer>
-                    <AppNavigator />
-                    <StatusBar style="auto" />
-                  </NavigationContainer>
-                </PaperProvider>
-              </NotificationProvider>
-            </AuthProvider>
-          </ThemeProvider>
+          <PaperProvider>
+            <AppNavigator />
+            <StatusBar style="auto" />
+          </PaperProvider>
         </SafeAreaProvider>
       </Provider>
     </GestureHandlerRootView>
